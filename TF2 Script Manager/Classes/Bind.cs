@@ -11,6 +11,8 @@
 
 #endregion
 
+using System.Text.RegularExpressions;
+
 namespace TF2_Script_Manager.Classes {
     public class Bind {
         #region Public Fields + Properties
@@ -33,5 +35,17 @@ namespace TF2_Script_Manager.Classes {
         public override string ToString() => $"bind \"{Key}\" \"{Command}\"";
 
         #endregion Public Methods
+
+        public static Bind TryParse(string bindLine)
+        {
+            var splitRegex = new Regex(@"\s");
+            var splits = splitRegex.Split(bindLine.Replace("\"", ""), 3);
+            if (splits.GetUpperBound(0) == 2)
+            {
+                var outBind = new Bind(splits[1], splits[2]);
+                return outBind;
+            }
+            return null;
+        }
     }
 }

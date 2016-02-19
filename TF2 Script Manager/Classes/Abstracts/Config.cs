@@ -17,6 +17,7 @@ namespace TF2_Script_Manager.Classes.Abstracts {
     public abstract class Config {
 
         public string Name { get; set; }
+        public string FileName => "";
         public List<string> Execs { get; set; }
         public List<Alias> Aliases { get; set; }
         public List<Bind> Binds { get; set; }

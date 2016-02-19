@@ -15,7 +15,7 @@ namespace TF2_Script_Manager.Classes {
     public class ClassConfig : Config {
         public Mercenary Mercenary { get; }
 
-        public new string Name => $"{Mercenary}.cfg";
+        public new string Name => $"{Mercenary}.cfg".ToLower();
 
         public ClassConfig(Mercenary mercenary) { Mercenary = mercenary; }
     }

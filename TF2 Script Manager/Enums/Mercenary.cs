@@ -9,5 +9,5 @@
 // Last Revised by: Alex Gravely - Alex
 #endregion
 namespace TF2_Script_Manager.Enums {
-    public enum Mercenary { scout, soldier, pyro, demoman, heavyweapons, engineer, medic, sniper, spy }
+    public enum Mercenary { Scout, Soldier, Pyro, Demoman, Heavyweapons, Engineer, Medic, Sniper, Spy }
 }

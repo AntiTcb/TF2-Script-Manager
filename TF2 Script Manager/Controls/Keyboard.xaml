@@ -1,0 +1,317 @@
+﻿<UserControl x:Class="TF2_Script_Manager.Controls.Keyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-Tagspace:TF2_Script_Manager.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="220"
+             d:DesignWidth="768"
+             mc:Ignorable="d">
+    <Grid Name="MainGrid">
+        <Grid.Resources>
+            <Style TargetType="StackPanel">
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".75*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="44" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Esc" Tag="ESC" />
+            <Button Content="F1" Tag="F1" />
+            <Button Content="F2" Tag="F2" />
+            <Button Content="F3" Tag="F3" />
+            <Button Content="F4" Tag="F4" />
+            <Button Content="F5" Tag="F5" />
+            <Button Content="F6" Tag="F6" />
+            <Button Content="F7" Tag="F7" />
+            <Button Content="F8" Tag="F8" />
+            <Button Content="F9" Tag="F9" />
+            <Button Content="F10" Tag="F10" />
+            <Button Content="F11" Tag="F11" />
+            <Button Content="F12" Tag="F12" />
+        </StackPanel>
+
+        <Grid Grid.Row="0"
+              Grid.Column="1"
+              Grid.RowSpan="5"
+              Margin="5, 0, 0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".75*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                </Style>
+            </Grid.Resources>
+
+            <UniformGrid Grid.Row="0"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="4"
+                         Columns="3">
+                <Button Content="HOME" Tag="HOME" />
+                <Button Content="END" Tag="END" />
+                <Button Content="DEL" Tag="DEL" />
+            </UniformGrid>
+
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Content="7"
+                    Tag="KP_HOME" />
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    Content="8"
+                    Tag="KP_UPARROW" />
+            <Button Grid.Row="1"
+                    Grid.Column="2"
+                    Content="9"
+                    Tag="KP_PGUP" />
+            <Button Grid.Row="1"
+                    Grid.Column="3"
+                    Content="/"
+                    Tag="KP_SLASH" />
+
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Content="4"
+                    Tag="KP_LEFTARROW" />
+            <Button Grid.Row="2"
+                    Grid.Column="1"
+                    Content="5"
+                    Tag="KP_5" />
+            <Button Grid.Row="2"
+                    Grid.Column="2"
+                    Content="6"
+                    Tag="KP_RIGHTARROW" />
+            <Button Grid.Row="2"
+                    Grid.Column="3"
+                    Content="*"
+                    Tag="KP_MULTIPLY" />
+
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Content="1"
+                    Tag="KP_END" />
+            <Button Grid.Row="3"
+                    Grid.Column="1"
+                    Content="2"
+                    Tag="KP_DOWNARROW" />
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Content="3"
+                    Tag="KP_PGDN" />
+            <Button Grid.Row="3"
+                    Grid.Column="3"
+                    Content="-"
+                    Tag="KP_MINUS" />
+
+            <Button Grid.Row="4"
+                    Grid.Column="0"
+                    Content="0"
+                    Tag="KP_INS" />
+            <Button Grid.Row="4"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Content="ENTER"
+                    Tag="KP_ENTER" />
+            <Button Grid.Row="4"
+                    Grid.Column="3"
+                    Content="+"
+                    Tag="KP_PLUS" />
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="38" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="`" Tag="`" />
+            <Button Content="1" Tag="1" />
+            <Button Content="2" Tag="2" />
+            <Button Content="3" Tag="3" />
+            <Button Content="4" Tag="4" />
+            <Button Content="5" Tag="5" />
+            <Button Content="6" Tag="6" />
+            <Button Content="7" Tag="7" />
+            <Button Content="8" Tag="8" />
+            <Button Content="9" Tag="9" />
+            <Button Content="0" Tag="0" />
+            <Button Content="-" Tag="-" />
+            <Button Content="=" Tag="=" />
+        </StackPanel>
+
+
+        <Button Grid.Row="1"
+                Grid.Column="0"
+                Width="74"
+                Margin="2"
+                HorizontalAlignment="Right"
+                Content="Backspace"
+                Tag="BACKSPACE" />
+
+
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Width="45"
+                Margin="2"
+                HorizontalAlignment="Left"
+                Content="Tab"
+                Tag="Tab" />
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="38" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Q" Tag="Q" />
+            <Button Content="W" Tag="W" />
+            <Button Content="E" Tag="E" />
+            <Button Content="R" Tag="R" />
+            <Button Content="T" Tag="T" />
+            <Button Content="Y" Tag="Y" />
+            <Button Content="U" Tag="U" />
+            <Button Content="I" Tag="I" />
+            <Button Content="O" Tag="O" />
+            <Button Content="P" Tag="P" />
+            <Button Content="[" Tag="[" />
+            <Button Content="]" Tag="]" />
+            <Button Width="66"
+                    Content="\"
+                    Tag="\" />
+        </StackPanel>
+
+        <Button Grid.Row="3"
+                Grid.Column="0"
+                Width="55"
+                Margin="2"
+                HorizontalAlignment="Left"
+                Content="CAPS"
+                Tag="CAPSLOCK" />
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="38" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="A" Tag="A" />
+            <Button Content="S" Tag="S" />
+            <Button Content="D" Tag="D" />
+            <Button Content="F" Tag="F" />
+            <Button Content="G" Tag="G" />
+            <Button Content="H" Tag="H" />
+            <Button Content="J" Tag="J" />
+            <Button Content="K" Tag="K" />
+            <Button Content="L" Tag="L" />
+            <Button Content=";" Tag="SEMICOLON" />
+            <Button Content="'" Tag="'" />
+            <Button Width="97"
+                    Content="Enter"
+                    Tag="ENTER" />
+        </StackPanel>
+
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                Width="72"
+                Margin="2"
+                HorizontalAlignment="Left"
+                Content="SHIFT"
+                Tag="SHIFT" />
+        <StackPanel Grid.Row="4"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="38" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Z" Tag="Z" />
+            <Button Content="X" Tag="X" />
+            <Button Content="C" Tag="C" />
+            <Button Content="V" Tag="V" />
+            <Button Content="B" Tag="B" />
+            <Button Content="N" Tag="N" />
+            <Button Content="M" Tag="M" />
+            <Button Content="," Tag="," />
+            <Button Content="." Tag="." />
+            <Button Content="/" Tag="/" />
+            <Button Content="PGUP" Tag="PGUP" />
+            <Button Content="&#x25B2;"
+                    FontFamily="Segoe UI Symbol"
+                    Tag="UPARROW" />
+            <Button Content="PGDN" Tag="PGDN" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="0">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="37" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Width="60"
+                    Content="CTRL"
+                    Tag="CTRL" />
+            <Button Content="ALT" Tag="ALT" />
+            <Button Width="375"
+                    Content="SPACE"
+                    Tag="SPACE" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource MetroButton}" TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="Width" Value="37" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="&#x25C4;"
+                    FontFamily="Segoe UI Symbol"
+                    Tag="LEFTARROW" />
+            <Button Content="&#x25BC;"
+                    FontFamily="Segoe UI Symbol"
+                    Tag="DOWNARROW" />
+            <Button Content="&#x25BA;"
+                    FontFamily="Segoe UI Symbol"
+                    Tag="RIGHTARROW" />
+        </StackPanel>
+    </Grid>
+</UserControl>
+

@@ -18,11 +18,11 @@ namespace TF2_Script_Manager.Services {
             var bindsOutput = new StringBuilder();
             var aliasesOutput = new StringBuilder();
             var execsOutput = new StringBuilder(); 
+            
+        }
 
-            using (var sw = new StreamWriter(config.FileName)
-            {
-
-            }
+        public static void WriteOtherConfigFile(OtherConfig config) {
+            
         }
     }
 }

@@ -59,12 +59,20 @@ namespace TF2_Script_Manager.Services {
             return Config;
         }
 
-        public static async Task< OtherConfig > ReadOtherConfig(string filePath) {
-            var Config = new OtherConfig();
-            using ( var sr = new StreamReader(filePath) ) {
-                while ( !sr.EndOfStream ) { var line = await sr.ReadLineAsync(); }
-            }
+        public static async Task< OtherConfig > ReadGraphicsConfig(string filePath) {
+            var Config = new OtherConfig(GameSetting.Graphics);
+            return Config;
+        }
 
+        public static async Task< OtherConfig > ReadAutoExecConfig(string filePath) {
+            var Config = new OtherConfig(GameSetting.AutoExec);
+            
+            return Config;
+        }
+
+        public static async Task<OtherConfig> ReadSettingsConfig(string filePath)
+        {
+            var Config = new OtherConfig(GameSetting.Settings);
             return Config;
         }
 

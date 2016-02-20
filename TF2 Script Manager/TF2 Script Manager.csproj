@@ -48,8 +48,13 @@
       <HintPath>..\packages\PropertyChanged.Fody.1.50.4\lib\dotnet\PropertyChanged.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -79,6 +84,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Keyboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,8 +106,13 @@
     <Compile Include="Classes\ClassConfig.cs" />
     <Compile Include="Classes\KeybindCollection.cs" />
     <Compile Include="Classes\OtherConfig.cs" />
+    <Compile Include="Controls\Keyboard.xaml.cs">
+      <DependentUpon>Keyboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="Enums\Mercenary.cs" />
+    <Compile Include="Enums\GameSetting.cs" />
+    <Compile Include="Services\AppSettings.cs" />
     <Compile Include="Services\ConfigReader.cs" />
     <Compile Include="Services\ConfigWriter.cs" />
     <Compile Include="Services\DefaultBinds.cs" />
@@ -127,6 +145,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -134,7 +153,48 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_allclass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_demoman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_engineer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_heavy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_medic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_pyro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_scout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_sniper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_soldier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Leaderboard_class_spy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Settings_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\applications-graphics.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

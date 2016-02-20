@@ -10,8 +10,13 @@
 #endregion
 namespace TF2_Script_Manager.Classes {
     using Abstracts;
+    using Enums;
 
     public class OtherConfig : Config {
-         
+        public new string Name => $"{GameSetting}.cfg".ToLower();
+
+        public GameSetting GameSetting { get; }
+
+        public OtherConfig(GameSetting gameSetting) { GameSetting = gameSetting; }
     }
 }

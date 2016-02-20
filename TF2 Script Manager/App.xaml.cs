@@ -13,8 +13,6 @@ namespace TF2_Script_Manager
     /// </summary>
     public partial class App : Application
     {
-        void App_OnStartup(object sender, StartupEventArgs e) {
-            
-        }
+        void App_OnStartup(object sender, StartupEventArgs e) => Core.Initialize();
     }
 }

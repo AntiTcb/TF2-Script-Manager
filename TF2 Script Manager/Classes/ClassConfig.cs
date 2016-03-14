@@ -9,14 +9,18 @@
 // Last Revised by: Alex Gravely - Alex
 #endregion
 namespace TF2_Script_Manager.Classes {
+    using System.Threading.Tasks;
     using Abstracts;
     using Enums;
+    using Services;
 
-    public class ClassConfig : Config {
-        public Mercenary Mercenary { get; }
+    public sealed class ClassConfig : Config {
+        public ControlConfig ControlConfig { get; }
 
-        public new string Name => $"{Mercenary}.cfg".ToLower();
+        public new string Name => $"{ControlConfig}.cfg".ToLower();
 
-        public ClassConfig(Mercenary mercenary) { Mercenary = mercenary; }
+        public override void Save() => Task.Run(() => ConfigWriter.WriteClassConfigFile(this));
+
+        public ClassConfig(ControlConfig controlConfig) { ControlConfig = controlConfig; }
     }
 }

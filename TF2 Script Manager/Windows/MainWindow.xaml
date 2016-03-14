@@ -5,10 +5,11 @@
                       xmlns:LocalControls="clr-namespace:TF2_Script_Manager.Controls"
                       Title="TF2 Script Manager"
                       Width="780"
-                      Height="450"
+                      Height="485"
                       MinWidth="780"
                       MinHeight="450"
-                      Closing="MainWindow_OnClosing">
+                      Closing="MainWindow_OnClosing"
+                      WindowStartupLocation="CenterScreen">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -77,20 +78,28 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
 
-            <TabControl Name="AppTabs" SelectionChanged="AppTabs_OnSelectionChanged" Controls:TabControlHelper.IsUnderlined="True">
+            <TabControl Name="AppTabs"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        Controls:TabControlHelper.IsUnderlined="True"
+                        SelectionChanged="AppTabs_OnSelectionChanged">
                 <TabControl.Resources>
                     <Style BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}" />
                 </TabControl.Resources>
+
                 <TabItem Header="Bindings">
                     <Grid VerticalAlignment="Top">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height=".15*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TabControl Name="ConfigTabs" SelectionChanged="ConfigTabs_OnSelectionChanged" 
+
+                        <TabControl Name="ConfigTabs"
                                     Grid.Row="0"
                                     HorizontalAlignment="Center"
-                                    Controls:TabControlHelper.IsUnderlined="True">
+                                    Controls:TabControlHelper.IsUnderlined="True"
+                                    SelectionChanged="ConfigTabs_OnSelectionChanged">
                             <TabControl.Resources>
                                 <Style TargetType="{x:Type Image}">
                                     <Style.Setters>
@@ -189,7 +198,7 @@
                                     </StackPanel>
                                 </TabItem.Header>
                             </TabItem>
-                            <TabItem Name="GraphicsTab">
+                            <!--<TabItem Name="GraphicsTab">
                                 <TabItem.Header>
                                     <StackPanel>
                                         <Image Source="../Resources/applications-graphics.png" />
@@ -204,17 +213,41 @@
                                         <TextBlock Text="Settings" />
                                     </StackPanel>
                                 </TabItem.Header>
-                            </TabItem>
+                            </TabItem>-->
                         </TabControl>
 
-                        <LocalControls:Keyboard Grid.Row="2"
+                        <StackPanel Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style BasedOn="{StaticResource MetroButton}" TargetType="Button">
+                                    <Setter Property="Background" Value="LightSeaGreen" />
+                                    <Setter Property="Margin" Value="2 5 2 5" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button Content="Aliases" />
+                            <Button Content="Execs" />
+                            <Button Content="Toggles" />
+                            <Button Content="BindToggles" />
+                            <Button Content="Echoes" />
+                        </StackPanel>
+
+                        <LocalControls:Keyboard x:Name="KeybindsKeyboard"
+                                                Grid.Row="2"
                                                 Height="300"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Top" />
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Installed Scripts" />
+                <!--<TabItem Header="Installed Scripts">
+                    <LocalControls:ScriptCommandManager />
+                </TabItem>-->
+
+                <!--<TabItem Header="Custom Script Files">
+                    <LocalControls:CustomScriptFileManager />
+                </TabItem>-->
+
             </TabControl>
         </StackPanel>
 

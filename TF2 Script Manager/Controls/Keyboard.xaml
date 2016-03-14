@@ -194,16 +194,16 @@
                     <Setter Property="Width" Value="38" />
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Q" Tag="Q" />
-            <Button Content="W" Tag="W" />
-            <Button Content="E" Tag="E" />
-            <Button Content="R" Tag="R" />
-            <Button Content="T" Tag="T" />
-            <Button Content="Y" Tag="Y" />
-            <Button Content="U" Tag="U" />
-            <Button Content="I" Tag="I" />
-            <Button Content="O" Tag="O" />
-            <Button Content="P" Tag="P" />
+            <Button Content="Q" Tag="q" />
+            <Button Content="W" Tag="w" />
+            <Button Content="E" Tag="e" />
+            <Button Content="R" Tag="r" />
+            <Button Content="T" Tag="t" />
+            <Button Content="Y" Tag="y" />
+            <Button Content="U" Tag="u" />
+            <Button Content="I" Tag="i" />
+            <Button Content="O" Tag="o" />
+            <Button Content="P" Tag="p" />
             <Button Content="[" Tag="[" />
             <Button Content="]" Tag="]" />
             <Button Width="66"
@@ -227,15 +227,15 @@
                     <Setter Property="Width" Value="38" />
                 </Style>
             </StackPanel.Resources>
-            <Button Content="A" Tag="A" />
-            <Button Content="S" Tag="S" />
-            <Button Content="D" Tag="D" />
-            <Button Content="F" Tag="F" />
-            <Button Content="G" Tag="G" />
-            <Button Content="H" Tag="H" />
-            <Button Content="J" Tag="J" />
-            <Button Content="K" Tag="K" />
-            <Button Content="L" Tag="L" />
+            <Button Content="A" Tag="a" />
+            <Button Content="S" Tag="s" />
+            <Button Content="D" Tag="d" />
+            <Button Content="F" Tag="f" />
+            <Button Content="G" Tag="g" />
+            <Button Content="H" Tag="h" />
+            <Button Content="J" Tag="j" />
+            <Button Content="K" Tag="k" />
+            <Button Content="L" Tag="l" />
             <Button Content=";" Tag="SEMICOLON" />
             <Button Content="'" Tag="'" />
             <Button Width="97"
@@ -259,13 +259,13 @@
                     <Setter Property="Width" Value="38" />
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Z" Tag="Z" />
-            <Button Content="X" Tag="X" />
-            <Button Content="C" Tag="C" />
-            <Button Content="V" Tag="V" />
-            <Button Content="B" Tag="B" />
-            <Button Content="N" Tag="N" />
-            <Button Content="M" Tag="M" />
+            <Button Content="Z" Tag="z" />
+            <Button Content="X" Tag="x" />
+            <Button Content="C" Tag="c" />
+            <Button Content="V" Tag="v" />
+            <Button Content="B" Tag="b" />
+            <Button Content="N" Tag="n" />
+            <Button Content="M" Tag="m" />
             <Button Content="," Tag="," />
             <Button Content="." Tag="." />
             <Button Content="/" Tag="/" />
@@ -287,10 +287,18 @@
                     Content="CTRL"
                     Tag="CTRL" />
             <Button Content="ALT" Tag="ALT" />
-            <Button Width="375"
+            <Button Width="100"
                     Content="SPACE"
                     Tag="SPACE" />
-
+            <Button Content="M1" Tag="MOUSE1" />
+            <Button Content="M2" Tag="MOUSE2" />
+            <Button Content="M3" Tag="MOUSE3" />
+            <Button Width="Auto"
+                    Content="MWHEELUP"
+                    Tag="MWHEELUP" />
+            <Button Width="Auto"
+                    Content="MWHEELDOWN"
+                    Tag="MWHEELDOWN" />
         </StackPanel>
 
         <StackPanel Grid.Row="5"

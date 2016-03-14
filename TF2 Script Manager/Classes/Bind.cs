@@ -40,12 +40,9 @@ namespace TF2_Script_Manager.Classes {
         {
             var splitRegex = new Regex(@"\s");
             var splits = splitRegex.Split(bindLine.Replace("\"", ""), 3);
-            if (splits.GetUpperBound(0) == 2)
-            {
-                var outBind = new Bind(splits[1], splits[2]);
-                return outBind;
-            }
-            return null;
+            if ( splits.GetUpperBound(0) != 2 ) { return null; }
+            var outBind = new Bind(splits[1], splits[2]);
+            return outBind;
         }
     }
 }

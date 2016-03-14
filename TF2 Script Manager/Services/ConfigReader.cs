@@ -6,7 +6,7 @@
 // Project: TF2 Script Manager
 // 
 // Created: 02/19/2016 2:09 AM
-// Last Revised: 02/19/2016 3:30 AM
+// Last Revised: 03/10/2016 5:20 PM
 // Last Revised by: Alex Gravely - Alex
 
 #endregion
@@ -25,7 +25,7 @@ namespace TF2_Script_Manager.Services {
     public static class ConfigReader {
         #region Public Methods
 
-        public static async Task< ClassConfig > ReadClassConfig(string filePath, Mercenary merc) {
+        public static async Task< ClassConfig > ReadClassConfig(string filePath, ControlConfig merc) {
             var Config = new ClassConfig(merc);
             using ( var sr = new StreamReader(filePath) )
             {
@@ -33,46 +33,47 @@ namespace TF2_Script_Manager.Services {
                 {
                     var line = await sr.ReadLineAsync();
 
-                    var reg = new Regex("\bbind \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { continue; }
+                    var reg = new Regex("^bind ", RegexOptions.IgnoreCase);
+                    if ( reg.IsMatch(line) )
+                    {
+                        var newBind = Bind.TryParse(line);
+                        Config.Keybinds.Bind(newBind.Key, newBind);
+                        continue;
+                    }
 
-                    reg = new Regex("\balias \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { continue; }
+                    reg = new Regex("^alias ", RegexOptions.IgnoreCase);
+                    if ( reg.IsMatch(line) )
+                    {
+                        Config.Aliases.Add(Alias.TryParse(line));
+                        continue;
+                    }
 
-                    reg = new Regex("\bexec \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { continue; }
+                    reg = new Regex("^exec ", RegexOptions.IgnoreCase);
+                    if ( reg.IsMatch(line) )
+                    {
+                        Config.Execs.Add(Exec.TryParse(line));
+                        continue;
+                    }
 
-                    reg = new Regex("\btoggle \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { continue; }
+                    reg = new Regex("^toggle ", RegexOptions.IgnoreCase);
+                    if ( reg.IsMatch(line) )
+                    {
+                        Config.Toggles.Add(Toggle.TryParse(line));
+                        continue;
+                    }
 
-                    reg = new Regex("\bbindtoggle \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { continue; }
+                    reg = new Regex("^bindtoggle ", RegexOptions.IgnoreCase);
+                    if ( reg.IsMatch(line) )
+                    {
+                        Config.BindToggles.Add(BindToggle.TryParse(line));
+                        continue;
+                    }
 
-                    reg = new Regex("\becho \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { continue; }
-
-                    reg = new Regex("\bwait \b", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { }
+                    reg = new Regex("^echo ", RegexOptions.IgnoreCase);
+                    if ( reg.IsMatch(line) ) { Config.Echoes.Add(Echo.TryParse(line)); }
                 }
             }
 
-            return Config;
-        }
-
-        public static async Task< OtherConfig > ReadGraphicsConfig(string filePath) {
-            var Config = new OtherConfig(GameSetting.Graphics);
-            return Config;
-        }
-
-        public static async Task< OtherConfig > ReadAutoExecConfig(string filePath) {
-            var Config = new OtherConfig(GameSetting.AutoExec);
-            
-            return Config;
-        }
-
-        public static async Task<OtherConfig> ReadSettingsConfig(string filePath)
-        {
-            var Config = new OtherConfig(GameSetting.Settings);
             return Config;
         }
 

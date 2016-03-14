@@ -1,27 +1,44 @@
 ﻿#region Header
+
 // Description:
 // 
 // Solution: TF2 Script Manager
 // Project: TF2 Script Manager
 // 
-// Created: 02/19/2016 1:10 AM
-// Last Revised: 02/19/2016 1:10 AM
+// Created: 02/19/2016 1:18 AM
+// Last Revised: 03/10/2016 2:33 PM
 // Last Revised by: Alex Gravely - Alex
+
 #endregion
+
 namespace TF2_Script_Manager.Classes.Abstracts {
+    #region Using
+
     using System.Collections.Generic;
     using PropertyChanged;
     using Services;
 
-    [ImplementPropertyChanged]
-    public abstract class Config {
+    #endregion
 
-        public string Name { get; set; }
+    [ ImplementPropertyChanged ]
+    public abstract class Config {
+        #region Public Fields + Properties
+
+        public List< Alias > Aliases { get; set; } = new List< Alias >();
+        public List< Bind > Binds { get; set; } = new List< Bind >();
+        public List< BindToggle > BindToggles { get; set; } = new List< BindToggle >();
+        public List< Echo > Echoes { get; set; } = new List< Echo >();
+        public List< Exec > Execs { get; set; } = new List< Exec >();
         public string FileName => "";
-        public List<string> Execs { get; set; }
-        public List<Alias> Aliases { get; set; }
-        public List<Bind> Binds { get; set; }
-        public KeybindingCollection Keybinds { get; set; }
+        public KeybindingCollection Keybinds { get; set; } = new KeybindingCollection();
+        public string Name { get; set; }
+        public List< Toggle > Toggles { get; set; } = new List< Toggle >();
+
+        #endregion Public Fields + Properties
+
+        #region Public Methods
+
+        public abstract void Save();
 
         public void SetDefaultKeybinds() {
             foreach ( var item in Keybinds ) { Keybinds[ item.Key ] = null; }
@@ -92,5 +109,7 @@ namespace TF2_Script_Manager.Classes.Abstracts {
             Keybinds.Bind("SPACE", DefaultBinds.Jump);
             Keybinds.Bind("TAB", DefaultBinds.ScoreBoard);
         }
+
+        #endregion Public Methods
     }
 }

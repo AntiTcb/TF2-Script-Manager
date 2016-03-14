@@ -1,50 +1,89 @@
 ﻿#region Header
+
 // Description:
 // 
 // Solution: TF2 Script Manager
 // Project: TF2 Script Manager
 // 
 // Created: 02/20/2016 12:34 AM
-// Last Revised: 02/20/2016 12:34 AM
+// Last Revised: 03/10/2016 2:08 PM
 // Last Revised by: Alex Gravely - Alex
+
 #endregion
+
 namespace TF2_Script_Manager.Services {
+    #region Using
+
     using System;
+    using System.Diagnostics;
     using System.IO;
     using ProtoBuf;
 
-    [ProtoContract(ImplicitFields = ImplicitFields.AllFields)]
-    public class AppSettings {
-        public static readonly string AppDataPath = Environment.GetFolderPath
-            (Environment.SpecialFolder.ApplicationData) + @"\TF2ScriptManager";
+    #endregion
 
-        public static readonly string BackupDataPath = AppDataPath + @"\Backsups";
+    [ ProtoContract(ImplicitFields = ImplicitFields.AllFields) ]
+    public class AppSettings {
+        #region Public Fields + Properties
+
+        public static readonly string AppDataPath = Environment.GetFolderPath
+                                                        (Environment.SpecialFolder.ApplicationData) +
+                                                    @"\TF2ScriptManager";
+
+        public static readonly string BackupDataPath = AppDataPath + @"\Backups";
 
         public string TF2Directory = "";
 
-        public static void Save(AppSettings settings) {
+        #endregion Public Fields + Properties
+
+        #region Public Constructors
+
+        public AppSettings() {
+            if ( !Directory.Exists(AppDataPath) ) { Directory.CreateDirectory(AppDataPath); }
+            if ( !Directory.Exists(BackupDataPath) ) { Directory.CreateDirectory(BackupDataPath); }
+        }
+
+        #endregion Public Constructors
+
+        #region Public Methods
+
+        public static AppSettings Load() {
             Environment.CurrentDirectory = AppDataPath;
-            using ( var file = File.Create("settings.ini") )
+            using ( var file = File.OpenRead("settings.ini") )
             {
-                Serializer.Serialize(file, settings);
+                try {
+                    return Serializer.Deserialize< AppSettings >(file);
+                }
+                catch {
+                    return LoadBackup();
+                }
             }
         }
 
-        public static void Load() {
+        public static AppSettings LoadBackup() {
+            Environment.CurrentDirectory = BackupDataPath;
+            using ( var file = File.Create("settings.ini") )
+            {
+                try {
+                    return Serializer.Deserialize< AppSettings >(file);
+                }
+                catch
+                {
+                    Debug.WriteLine("Failed loading backup");
+                    return null;
+                }
+            }
+        }
+
+        public static void Save(AppSettings settings) {
             Environment.CurrentDirectory = AppDataPath;
-            using ( var file = File.OpenRead("settings.ini") ) { Serializer.Deserialize< AppSettings >(file); }
+            using ( var file = File.Create("settings.ini") ) { Serializer.Serialize(file, settings); }
         }
 
         public static void SaveBackup(AppSettings settings) {
             Environment.CurrentDirectory = BackupDataPath;
-            using (var file = File.Create("settings.ini")) { Serializer.Serialize(file, settings);}
+            using ( var file = File.Create("settings.ini") ) { Serializer.Serialize(file, settings); }
         }
 
-        public static void LoadBackup() {
-            Environment.CurrentDirectory = BackupDataPath;
-            using ( var file = File.Create("settings.ini") ) { Serializer.Deserialize< AppSettings >(file); }
-        }
-
-
+        #endregion Public Methods
     }
 }

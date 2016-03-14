@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -84,13 +85,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\CustomScriptFileManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Keyboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScriptCommandManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\KeyBindDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,22 +113,35 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Echo.cs" />
+    <Compile Include="Classes\Abstracts\Keyword.cs" />
     <Compile Include="Classes\Alias.cs" />
     <Compile Include="Classes\Abstracts\Config.cs" />
     <Compile Include="Classes\Bind.cs" />
+    <Compile Include="Classes\BindToggle.cs" />
     <Compile Include="Classes\ClassConfig.cs" />
+    <Compile Include="Classes\Exec.cs" />
     <Compile Include="Classes\KeybindCollection.cs" />
-    <Compile Include="Classes\OtherConfig.cs" />
+    <Compile Include="Classes\SettingsConfig.cs" />
+    <Compile Include="Classes\Toggle.cs" />
+    <Compile Include="Controls\CustomScriptFileManager.xaml.cs">
+      <DependentUpon>CustomScriptFileManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ScriptCommandManager.xaml.cs">
+      <DependentUpon>ScriptCommandManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core.cs" />
-    <Compile Include="Enums\Mercenary.cs" />
-    <Compile Include="Enums\GameSetting.cs" />
+    <Compile Include="Enums\ControlConfig.cs" />
     <Compile Include="Services\AppSettings.cs" />
     <Compile Include="Services\ConfigReader.cs" />
     <Compile Include="Services\ConfigWriter.cs" />
     <Compile Include="Services\DefaultBinds.cs" />
+    <Compile Include="Windows\KeyBindDialog.xaml.cs">
+      <DependentUpon>KeyBindDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

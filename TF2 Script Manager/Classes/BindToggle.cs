@@ -6,8 +6,8 @@
 // Project: TF2 Script Manager
 // 
 // Created: 03/10/2016 2:19 PM
-// Last Revised: 03/10/2016 2:19 PM
-// Last Revised by: Alex Gravely - Alex
+// Last Revised: 05/12/2016 6:00 PM
+// Last Revised by: Alex Gravely
 
 #endregion
 
@@ -21,6 +21,9 @@ namespace TF2_Script_Manager.Classes {
     #endregion
 
     public class BindToggle : Keyword {
+
+        public int ToggleValue { get; set; }
+
         #region Public Constructors
 
         public BindToggle(string name) : base(name) { }

@@ -18,7 +18,7 @@ namespace TF2_Script_Manager.Services {
     using System.Diagnostics;
     using System.IO;
     using ProtoBuf;
-
+    using System.Windows.Forms;
     #endregion
 
     [ ProtoContract(ImplicitFields = ImplicitFields.AllFields) ]
@@ -45,7 +45,7 @@ namespace TF2_Script_Manager.Services {
         #endregion Public Constructors
 
         #region Public Methods
-
+        
         public static AppSettings Load() {
             Environment.CurrentDirectory = AppDataPath;
             using ( var file = File.OpenRead("settings.ini") )

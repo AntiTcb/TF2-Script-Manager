@@ -39,5 +39,7 @@ namespace TF2_Script_Manager.Classes {
             return splits.GetUpperBound(0) != 2 ? null : new Alias(splits[ 1 ], splits[ 2 ]);
         }
         #endregion Public Methods
+
+        public override string ToString() => $"alias \"{Name}\" \"{Command}\"";
     }
 }

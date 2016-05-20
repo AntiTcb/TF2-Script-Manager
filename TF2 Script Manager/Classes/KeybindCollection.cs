@@ -59,5 +59,7 @@ namespace TF2_Script_Manager.Classes {
 
         public ICollection< string > Keys => innerDict.Keys;
         public ICollection< Bind > Bindings => innerDict.Values;
+
+        public override string ToString() => $"Count = {innerDict.Count}";
     }
 }

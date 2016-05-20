@@ -1,18 +1,20 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
+using TF2_Script_Manager.Classes;
+using TF2_Script_Manager.Enums;
 
 namespace TF2_Script_Manager.Windows
 {
     using System.ComponentModel;
     using PropertyChanged;
     using Services;
-
+    using MahApps.Metro.Controls.Dialogs;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     [ImplementPropertyChanged]
-    public partial class MainWindow : MetroWindow {
+    public partial class MainWindow {
         public static string ActiveAppTab { get; set; } = "";
         public static string ActiveConfigTab { get; set; } = "";
         public string WinTitle { get; } = $"TF2 Script Manager - {ActiveAppTab} - {ActiveConfigTab}";
@@ -22,6 +24,8 @@ namespace TF2_Script_Manager.Windows
             InitializeComponent();
             ConfigTabs.SelectedIndex = 0;
         }
+
+        public void OpenSettings(object sender, RoutedEventArgs e) => AppSettingsFlyout.IsOpen = !AppSettingsFlyout.IsOpen;
 
         public void DonateButton_OnClick(object sender, RoutedEventArgs e) {
 
@@ -90,5 +94,21 @@ namespace TF2_Script_Manager.Windows
         }
 
         void AppTabs_OnSelectionChanged(object sender, SelectionChangedEventArgs e) { }
+
+        void ResetAllBinds(object sender, RoutedEventArgs e)
+        {
+            if (Core.ActiveConfig is ClassConfig)
+            {
+                switch (((ClassConfig) Core.ActiveConfig).ControlConfig)
+                {
+                    case ControlConfig.AutoExec:
+                        Core.ActiveConfig.SetDefaultKeybinds();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

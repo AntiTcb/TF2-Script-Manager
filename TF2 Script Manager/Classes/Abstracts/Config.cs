@@ -25,13 +25,10 @@ namespace TF2_Script_Manager.Classes.Abstracts {
         #region Public Fields + Properties
 
         public List< Alias > Aliases { get; set; } = new List< Alias >();
-        public List< Bind > Binds { get; set; } = new List< Bind >();
         public List< BindToggle > BindToggles { get; set; } = new List< BindToggle >();
-        public List< Echo > Echoes { get; set; } = new List< Echo >();
         public List< Exec > Execs { get; set; } = new List< Exec >();
-        public string FileName => "";
         public KeybindingCollection Keybinds { get; set; } = new KeybindingCollection();
-        public string Name { get; set; }
+        public string FileName { get; set; }
         public List< Toggle > Toggles { get; set; } = new List< Toggle >();
 
         #endregion Public Fields + Properties
@@ -40,15 +37,18 @@ namespace TF2_Script_Manager.Classes.Abstracts {
 
         public abstract void Save();
 
-        public void SetDefaultKeybinds() {
-            foreach ( var item in Keybinds ) { Keybinds[ item.Key ] = null; }
+        public void ClearKeybinds()
+        {
+            foreach (var item in Keybinds) { Keybinds[item.Key] = null; }
+        }
 
-            Keybinds.Bind("-", DefaultBinds.ChangeDisguiseTeam);
+        public void SetDefaultKeybinds() {
+            ClearKeybinds();
+
             Keybinds.Bind(",", DefaultBinds.ChangeClass);
             Keybinds.Bind(".", DefaultBinds.ChangeTeam);
             Keybinds.Bind("`", DefaultBinds.ToggleConsole);
             Keybinds.Bind("a", DefaultBinds.MoveLeft);
-            Keybinds.Bind("b", DefaultBinds.LastDisguise);
             Keybinds.Bind("c", DefaultBinds.VoiceMenu3);
             Keybinds.Bind("d", DefaultBinds.MoveRight);
             Keybinds.Bind("e", DefaultBinds.CallMedic);

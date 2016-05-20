@@ -27,9 +27,14 @@ namespace TF2_Script_Manager {
     #endregion
 
     public static class Core {
+
+        public const string GIT_HUB_URL = "https://github.com/AntiTcb/TF2-Script-Manager";
+
         #region Public Structs + Classes
 
-        public static class Windows { }
+        public static class Windows {
+            public static AppSettingsFlyout SettingsDialog = new AppSettingsFlyout();
+        }
 
         #endregion Public Structs + Classes
 
@@ -64,13 +69,7 @@ namespace TF2_Script_Manager {
                 Settings = AppSettings.Load();
                 if ( string.IsNullOrEmpty(Settings.TF2Directory) )
                 {
-                    var dialog = new FolderBrowserDialog
-                                 {
-                                     RootFolder =
-                                         Environment.Is64BitOperatingSystem
-                                             ? Environment.SpecialFolder.ProgramFilesX86
-                                             : Environment.SpecialFolder.ProgramFiles
-                                 };
+                    var dialog = new FolderBrowserDialog();
                     if ( dialog.ShowDialog() == DialogResult.OK )
                     {
                         Settings.TF2Directory = dialog.SelectedPath;
@@ -79,13 +78,7 @@ namespace TF2_Script_Manager {
                 }
                 if ( !Directory.Exists(Settings.TF2Directory + @"\cfg") )
                 {
-                    var dialog = new FolderBrowserDialog
-                                 {
-                                     RootFolder =
-                                         Environment.Is64BitOperatingSystem
-                                             ? Environment.SpecialFolder.ProgramFilesX86
-                                             : Environment.SpecialFolder.ProgramFiles
-                                 };
+                    var dialog = new FolderBrowserDialog();
                     if ( dialog.ShowDialog() == DialogResult.OK )
                     {
                         Settings.TF2Directory = dialog.SelectedPath;
@@ -95,13 +88,7 @@ namespace TF2_Script_Manager {
             }
             else
             {
-                var dialog = new FolderBrowserDialog
-                             {
-                                 RootFolder =
-                                     Environment.Is64BitOperatingSystem
-                                         ? Environment.SpecialFolder.ProgramFilesX86
-                                         : Environment.SpecialFolder.ProgramFiles
-                             };
+                var dialog = new FolderBrowserDialog();
                 if ( dialog.ShowDialog() == DialogResult.OK )
                 {
                     Settings.TF2Directory = dialog.SelectedPath;
@@ -117,7 +104,7 @@ namespace TF2_Script_Manager {
 
         public static async void LoadConfigs() {
             DefaultConfig =
-                await ConfigReader.ReadClassConfig($@"{Settings.TF2Directory}\cfg\config.cfg", ControlConfig.Config);
+                await ConfigReader.ReadClassConfig($@"{Settings.TF2Directory}\cfg\autoexec.cfg", ControlConfig.AutoExec);
             ScoutConfig =
                 await ConfigReader.ReadClassConfig($@"{Settings.TF2Directory}\cfg\scout.cfg", ControlConfig.Scout);
             SoldierConfig =

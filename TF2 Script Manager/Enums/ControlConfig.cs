@@ -9,5 +9,5 @@
 // Last Revised by: Alex Gravely - Alex
 #endregion
 namespace TF2_Script_Manager.Enums {
-    public enum ControlConfig { Config, Scout, Soldier, Pyro, Demoman, Heavyweapons, Engineer, Medic, Sniper, Spy }
+    public enum ControlConfig { AutoExec, Scout, Soldier, Pyro, Demoman, Heavyweapons, Engineer, Medic, Sniper, Spy }
 }

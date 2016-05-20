@@ -39,5 +39,11 @@ namespace TF2_Script_Manager.Classes {
         }
 
         #endregion Public Methods
+
+         #region Overrides of Object
+
+         public override string ToString() => $"toggle \"{Name}\" \"{Command}\"";
+
+         #endregion
     }
 }

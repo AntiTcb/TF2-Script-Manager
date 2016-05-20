@@ -27,6 +27,13 @@ namespace TF2_Script_Manager.Services {
 
         public static async Task< ClassConfig > ReadClassConfig(string filePath, ControlConfig merc) {
             var Config = new ClassConfig(merc);
+
+            if (!File.Exists(filePath))
+            {
+                if (Config.ControlConfig == ControlConfig.AutoExec || Config.ControlConfig == ControlConfig.Spy) { Config.SetDefaultKeybinds(); }
+                return Config;
+            }
+
             using ( var sr = new StreamReader(filePath) )
             {
                 while ( !sr.EndOfStream )
@@ -66,11 +73,7 @@ namespace TF2_Script_Manager.Services {
                     if ( reg.IsMatch(line) )
                     {
                         Config.BindToggles.Add(BindToggle.TryParse(line));
-                        continue;
                     }
-
-                    reg = new Regex("^echo ", RegexOptions.IgnoreCase);
-                    if ( reg.IsMatch(line) ) { Config.Echoes.Add(Echo.TryParse(line)); }
                 }
             }
 

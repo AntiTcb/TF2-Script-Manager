@@ -65,13 +65,16 @@
                         <Setter Property="Margin" Value="5" />
                     </Style>
                 </UniformGrid.Resources>
-                <Button Click="Unbind_Click" Content="Unbind" />
                 <Button Background="LightGreen"
                         Click="Save_Click"
-                        Content="Save" />
+                        Content="Save"
+                        ToolTip="Save this Keybind to the selected settings and closes this dialog."/>
+                <Button Click="Unbind_Click" Content="Unbind" 
+                        ToolTip="Unbinds this Keybind and closes this dialog."/>
                 <Button Background="LightCoral"
                         Click="Cancel_Click"
-                        Content="Cancel" />
+                        Content="Cancel"
+                        ToolTip="Closes this dialog without saving any binding changes."/>
             </UniformGrid>
         </Grid>
     </StackPanel>

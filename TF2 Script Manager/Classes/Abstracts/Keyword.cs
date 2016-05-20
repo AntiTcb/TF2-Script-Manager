@@ -18,11 +18,5 @@ namespace TF2_Script_Manager.Classes.Abstracts {
 
         protected Keyword(string name) { Name = name; }
         protected Keyword(string name, string command) : this(name) { Command = command; }
-
-        #region Overrides of Object
-
-        public override string ToString() => $@"{nameof(GetType)} ""{Name}"" ""{Command}""";
-
-        #endregion
     }
 }

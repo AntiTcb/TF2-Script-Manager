@@ -36,9 +36,11 @@ namespace TF2_Script_Manager.Classes {
         public static Exec TryParse(string bindLine) {
             var splits = new Regex(@"\s").Split(bindLine, 3);
             Debug.WriteLine(splits);
-            return splits.GetUpperBound(0) != 2 ? null : new Exec(splits[ 1 ], splits[ 2 ]);
+            return splits.Length != 2 ? null : new Exec(splits[ 1 ], splits[ 1 ]);
         }
 
         #endregion Public Methods
+
+        public override string ToString() => $"exec {Command}";
     }
 }

@@ -21,7 +21,7 @@ namespace TF2_Script_Manager.Classes {
     public class SettingsConfig : Config {
         #region Public Fields + Properties
 
-        public new string Name { get; } = "settings.cfg";
+        public string Name { get; } = "settings.cfg";
 
         #endregion Public Fields + Properties
 

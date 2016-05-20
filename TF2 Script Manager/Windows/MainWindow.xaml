@@ -2,7 +2,9 @@
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
                       xmlns:LocalControls="clr-namespace:TF2_Script_Manager.Controls"
+                      xmlns:Windows="clr-namespace:TF2_Script_Manager.Windows"
                       Title="TF2 Script Manager"
                       Width="780"
                       Height="485"
@@ -20,7 +22,7 @@
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Button Name="AppSettingsButton">
+            <Button Name="AppSettingsButton" Click="OpenSettings">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20"
                                Height="20"
@@ -31,6 +33,7 @@
                         </Rectangle.OpacityMask>
                     </Rectangle>
                     <TextBlock Margin="4 0 0 0"
+                               
                                VerticalAlignment="Center"
                                Text="App Settings" />
                 </StackPanel>
@@ -69,6 +72,12 @@
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
+
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Windows:AppSettingsFlyout x:Name="AppSettingsFlyout"/>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
 
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
@@ -227,9 +236,7 @@
                             </StackPanel.Resources>
                             <Button Content="Aliases" />
                             <Button Content="Execs" />
-                            <Button Content="Toggles" />
-                            <Button Content="BindToggles" />
-                            <Button Content="Echoes" />
+                            <Button Background="Red" Content="Reset Bindings" Click="ResetAllBinds"/>
                         </StackPanel>
 
                         <LocalControls:Keyboard x:Name="KeybindsKeyboard"
